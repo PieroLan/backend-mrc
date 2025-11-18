@@ -50,9 +50,6 @@ export class ApoderadoEntity {
   })
   updated_at: Date;
 
-  @OneToMany(() => AlumnoEntity, (alumno) => alumno.apoderado)
-  alumnos: AlumnoEntity[];
-
   @OneToMany(() => MatriculaEntity, (matricula) => matricula.apoderado)
   matriculas: MatriculaEntity[];
 }
