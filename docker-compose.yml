@@ -1,0 +1,32 @@
+# ...existing code...
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: nest_postgres_db
+    restart: always
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: nestjs_db
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  api:
+    container_name: nest_api
+    build:
+      context: .
+      target: prod
+    ports:
+      - "8080:8080"
+    env_file:
+      - .env
+    environment:
+      # En contenedor, el host de la DB es el nombre del servicio
+      HOST: postgres
+    depends_on:
+      - postgres
+
+volumes:
+  postgres_data:
