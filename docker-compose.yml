@@ -1,11 +1,10 @@
-# ...existing code...
+version: '3.8'
+
 services:
   postgres:
     image: postgres:16-alpine
     container_name: nest_postgres_db
     restart: always
-    ports:
-      - "5432:5432"
     environment:
       POSTGRES_USER: user
       POSTGRES_PASSWORD: password
@@ -18,13 +17,11 @@ services:
     build:
       context: .
       target: prod
+    restart: always
     ports:
       - "8080:8080"
     env_file:
       - .env
-    environment:
-      # En contenedor, el host de la DB es el nombre del servicio
-      HOST: postgres
     depends_on:
       - postgres
 
