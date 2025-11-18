@@ -46,12 +46,6 @@ export class AlumnoEntity {
   })
   updated_at: Date;
 
-  @ManyToOne(() => ApoderadoEntity, (apoderado) => apoderado.alumnos, {
-    eager: true,
-  })
-  @JoinColumn({ name: 'apoderado_id' })
-  apoderado: ApoderadoEntity;
-
   @OneToMany(() => MatriculaEntity, (matricula) => matricula.alumno)
   matriculas: MatriculaEntity[];
 }
