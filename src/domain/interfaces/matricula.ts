@@ -54,10 +54,6 @@ export class IMatriculaCreateDto {
   @IsNotEmpty({ message: 'El id del alumno es requerido' })
   @IsNumber()
   alumno_id: number;
-
-  @IsNotEmpty({ message: 'El id de la seccion es requerido' })
-  @IsNumber()
-  seccion_id: number;
 }
 
 export class IMatriculaUpdateDto {
