@@ -5,7 +5,6 @@ import { OrmConfig } from './config/orm/orm.config';
 import { AlumnoModule } from './presentation/alumno/alumno.module';
 import { ApoderadoModule } from './presentation/apoderado/apoderado.module';
 import { MatriculaModule } from './presentation/matricula/matricula.module';
-import { SeccionModule } from './presentation/seccion/seccion.module';
 
 @Module({
   imports: [
@@ -18,7 +17,6 @@ import { SeccionModule } from './presentation/seccion/seccion.module';
     AlumnoModule,
     ApoderadoModule,
     MatriculaModule,
-    SeccionModule,
   ],
   controllers: [],
   providers: [],

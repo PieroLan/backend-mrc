@@ -2,13 +2,10 @@ import {
   Column,
   CreateDateColumn,
   Entity,
-  JoinColumn,
-  ManyToOne,
   OneToMany,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
-import { ApoderadoEntity } from './apoderado.entity';
 import { MatriculaEntity } from './matricula.entity';
 
 @Entity('alumno')

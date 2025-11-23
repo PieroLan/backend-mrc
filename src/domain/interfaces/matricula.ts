@@ -7,18 +7,19 @@ import {
 } from 'class-validator';
 import { IAlumno } from './alumno';
 import { IApoderado } from './apoderado';
-import { ISeccion } from './seccion';
 
 export interface IMatricula {
   id: number;
   fecha_matricula: Date;
-  observaciones: string;
+  nivel_academico: string;
+  grado_estudio: string;
+  turno: string;
+  seccion: string;
   state: boolean;
   created_at: Date;
   updated_at: Date;
   apoderado: IApoderado;
   alumno: IAlumno;
-  seccion: ISeccion;
 }
 
 export class IMatriculaCreateDto {
@@ -30,9 +31,21 @@ export class IMatriculaCreateDto {
   @IsDateString()
   fecha_matricula: string;
 
-  @IsOptional()
+  @IsNotEmpty({ message: 'El nivel academico es requerido' })
   @IsString()
-  observaciones?: string;
+  nivel_academico: string;
+
+  @IsNotEmpty({ message: 'El grado de estudios es requerido' })
+  @IsString()
+  grado_estudio: string;
+
+  @IsNotEmpty({ message: 'El turno es requerido' })
+  @IsString()
+  turno: string;
+
+  @IsNotEmpty({ message: 'La sección es requerida' })
+  @IsString()
+  seccion: string;
 
   @IsNotEmpty({ message: 'El id del apoderado es requerido' })
   @IsNumber()
@@ -58,7 +71,19 @@ export class IMatriculaUpdateDto {
 
   @IsOptional()
   @IsString()
-  observaciones: string;
+  nivel_academico: string;
+
+  @IsOptional()
+  @IsString()
+  grado_estudio: string;
+
+  @IsOptional()
+  @IsString()
+  turno: string;
+
+  @IsOptional()
+  @IsString()
+  seccion: string;
 
   @IsOptional()
   @IsNumber()
@@ -67,8 +92,4 @@ export class IMatriculaUpdateDto {
   @IsOptional()
   @IsNumber()
   alumno_id: number;
-
-  @IsOptional()
-  @IsNumber()
-  seccion_id: number;
 }

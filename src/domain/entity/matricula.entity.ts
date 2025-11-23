@@ -9,7 +9,6 @@ import {
 } from 'typeorm';
 import { ApoderadoEntity } from './apoderado.entity';
 import { AlumnoEntity } from './alumno.entity';
-import { SeccionEntity } from './seccion.entity';
 
 @Entity('matricula')
 export class MatriculaEntity {
@@ -19,8 +18,17 @@ export class MatriculaEntity {
   @Column({ name: 'fecha_matricula', type: 'date', nullable: false })
   fecha_matricula: Date;
 
-  @Column({ type: 'text', nullable: false })
-  observaciones: string;
+  @Column({ name: 'nivel_academico', type: 'varchar', length: 100, nullable: false })
+  nivel_academico: string;
+
+  @Column({ name: 'grado_estudio', type: 'varchar', length: 100, nullable: false })
+  grado_estudio: string;
+
+  @Column({ name: 'turno', type: 'varchar', length: 100, nullable: false })
+  turno: string;
+
+  @Column({ name: 'seccion', type: 'varchar', length: 100, nullable: false })
+  seccion: string;
 
   @Column({ name: 'state', type: 'boolean', default: true })
   state: boolean;
@@ -48,10 +56,4 @@ export class MatriculaEntity {
   })
   @JoinColumn({ name: 'alumno_id' })
   alumno: AlumnoEntity;
-
-  @ManyToOne(() => SeccionEntity, (seccion) => seccion.matriculas, {
-    eager: true,
-  })
-  @JoinColumn({ name: 'seccion_id' })
-  seccion: SeccionEntity;
 }

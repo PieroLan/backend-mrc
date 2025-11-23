@@ -1,5 +1,5 @@
 import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
-import { AlumnoEntity, MatriculaEntity } from '../domain/entity';
+import { MatriculaEntity } from '../domain/entity';
 import { EntityFormatter } from 'src/helpers/format/entity-format.service';
 import { MatriculaRepositoryImpl } from 'src/domain/repository/impl/matricula.repository.impl';
 import {
@@ -28,7 +28,6 @@ export class MatriculaService {
     const matriculaFormatted = EntityFormatter.format(data, MatriculaEntity, {
       apoderado_id: 'apoderado',
       alumno_id: 'alumno',
-      seccion_id: 'seccion',
     });
     return await this.matriculaRepository.save(matriculaFormatted);
   }
@@ -38,7 +37,6 @@ export class MatriculaService {
     const matriculaFormatted = EntityFormatter.format(data, MatriculaEntity, {
       apoderado_id: 'apoderado',
       alumno_id: 'alumno',
-      seccion_id: 'seccion',
     });
     const updatedData = { ...exitingMatricula, ...matriculaFormatted };
     return await this.matriculaRepository.save(updatedData);
