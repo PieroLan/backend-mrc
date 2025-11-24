@@ -48,7 +48,7 @@ export class ApoderadoController {
     return {
       status: HttpStatus.CREATED,
       message: 'Apoderado creado',
-      data: data,
+      id: data.id,
     };
   }
 
