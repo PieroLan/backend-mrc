@@ -13,6 +13,19 @@ async function bootstrap() {
       transformOptions: { enableImplicitConversion: true }, // convierte string numérico a number
     }),
   );
+
+// para local pruebas
+  app.enableCors({
+    origin: [
+      'http://localhost:4200', // Angular local
+      'http://52.203.90.123', // IP pública sin puerto
+      'http://52.203.90.123:80', // si usas nginx
+      'http://52.203.90.123:8080', // si accedes directo a backend
+    ],
+    methods: 'GET,POST,PUT,PATCH,DELETE,OPTIONS',
+    allowedHeaders: 'Content-Type, Authorization',
+    credentials: true,
+  });
   await app.listen(envs.PORT);
   Logger.log(`🚀 Application is running on: http://localhost:${envs.PORT}}`);
 }
