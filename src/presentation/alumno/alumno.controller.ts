@@ -44,6 +44,7 @@ export class AlumnoController {
     return {
       status: HttpStatus.CREATED,
       message: 'Alumno creado',
+      data: data,
       id: data.id,
     };
   }
